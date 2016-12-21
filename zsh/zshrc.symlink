@@ -60,7 +60,7 @@ antigen bundle sorin-ionescu/prezto modules/helper
 # Would normally load this plugin, but I don't like the default setting to be local.
 # There is nothing built into the plugin to define the default, so I changed it in src
 # ---------------------------------------------------------------------
-source ~/.per-directory-history/per-directory-history.zsh
+source ~/.per-directory-history.zsh
 # antigen bundle per-directory-history
 
 # I aliased "st" to be the sublime executable so don't really nead this plugin
@@ -84,7 +84,7 @@ antigen apply
 
 
 # Annoying bug from antigen use prezto -- it sets ZDOTDIR to the wrong thing and tmux is then broken
-ZDOTDIR=/Users/lmonson
+ZDOTDIR=$HOME
 
 # ---------------------------------------------------------------------
 # Key bindings for zsh-history-substring-search
