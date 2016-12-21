@@ -1,41 +1,128 @@
-# shortcut to this dotfiles path is $ZSH
-export ZSH=$HOME/.dotfiles
+# Set to this to use case-sensitive completion
+# CASE_SENSITIVE="true"
 
-# your project folder that we can `c [tab]` to
-export PROJECTS=~/Code
+# Comment this out to disable bi-weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
 
-# Stash your environment variables in ~/.localrc. This means they'll stay out
-# of your main dotfiles repository (which may be public, like this one), but
-# you'll have access to them in your scripts.
-if [[ -a ~/.localrc ]]
-then
-  source ~/.localrc
-fi
+# Uncomment to change how often before auto-updates occur? (in days)
+# export UPDATE_ZSH_DAYS=13
 
-# all of our zsh files
-typeset -U config_files
-config_files=($ZSH/**/*.zsh)
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
 
-# load the path files
-for file in ${(M)config_files:#*/path.zsh}
-do
-  source $file
-done
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
-# load everything but the path and completion files
-for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
-do
-  source $file
-done
+# Uncomment following line if you want to disable command autocorrection
+# DISABLE_CORRECTION="true"
 
-# initialize autocomplete here, otherwise functions won't be loaded
-autoload -U compinit
-compinit
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
 
-# load every completion after autocomplete loads
-for file in ${(M)config_files:#*/completion.zsh}
-do
-  source $file
-done
+# Uncomment following line if you want to disable marking untracked files under
+# VCS as dirty. This makes repository status check for large repositories much,
+# much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-unset config_files
+export EDITOR='subl'
+
+# Customize to your needs...
+export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+
+
+# ---------------------- SHELL PLUGINS --------------------------------------------------------
+#                                                                                             |
+#                                                                                             |
+#                                                                                             |
+#                                                                                             v
+
+# ---------------------------------------------------------------------
+# Load Antigen
+# ---------------------------------------------------------------------
+source ~/.antigen/antigen.zsh
+
+# antigen use oh-my-zsh
+antigen use prezto
+
+# ---------------------------------------------------------------------
+# PREZTO modules that should be loaded first
+# antigen bundle sorin-ionescu/prezto modules/syntax-highlighting
+# ---------------------------------------------------------------------
+antigen bundle sorin-ionescu/prezto modules/prompt
+antigen bundle sorin-ionescu/prezto modules/helper
+
+# ---------------------------------------------------------------------
+# OH-my-zshell based stuff
+# ---------------------------------------------------------------------
+# antigen bundle zsh-autoenv
+
+# ---------------------------------------------------------------------
+# Would normally load this plugin, but I don't like the default setting to be local.
+# There is nothing built into the plugin to define the default, so I changed it in src
+# ---------------------------------------------------------------------
+source ~/.per-directory-history/per-directory-history.zsh
+# antigen bundle per-directory-history
+
+# I aliased "st" to be the sublime executable so don't really nead this plugin
+#antigen bundle sublime
+
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-history-substring-search
+
+# antigen bundle history
+
+
+# prezto based stuff
+# antigen bundle sorin-ionescu/prezto modules/git
+# antigen bundle sorin-ionescu/prezto modules/command-not-found
+# antigen bundle sorin-ionescu/prezto modules/tmux
+# zstyle ':prezto:module:tmux:auto-start' local 'yes'
+# set-option -g 'destroy-unattached' 'on'
+
+antigen apply
+
+
+
+# Annoying bug from antigen use prezto -- it sets ZDOTDIR to the wrong thing and tmux is then broken
+ZDOTDIR=/Users/lmonson
+
+# ---------------------------------------------------------------------
+# Key bindings for zsh-history-substring-search
+# ---------------------------------------------------------------------
+# zmodload zsh/terminfo
+# bindkey "$terminfo[cuu1]" history-substring-search-up
+# bindkey "$terminfo[cud1]" history-substring-search-down
+bindkey "^[[A" history-substring-search-up
+bindkey "^[[B" history-substring-search-down
+
+
+# ---------------------------------------------------------------------
+# Visual prompt style
+# ---------------------------------------------------------------------
+prompt walters
+
+
+#                                                                                             ^
+#                                                                                             |
+#                                                                                             |
+#                                                                                             |
+# ---------------------- SHELL PLUGINS --------------------------------------------------------
+
+# ---------------------------- ALIASES --------------------------------------------------------
+#                                                                                             |
+#                                                                                             |
+#                                                                                             |
+#                                                                                             v
+alias tm=tmux
+alias tmc="tmux list-commands"
+alias tml="tmux list-sessions"
+alias pbcopy='reattach-to-user-namespace /usr/bin/pbcopy'
+#                                                                                             ^
+#                                                                                             |
+#                                                                                             |
+#                                                                                             |
+# ---------------------------- ALIASES --------------------------------------------------------
+
+#source ~/.bin/tmuxinator.zsh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
