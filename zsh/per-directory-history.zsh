@@ -109,6 +109,10 @@ function _per-directory-history-change-directory() {
 }
 
 function _per-directory-history-addhistory() {
+  if  [[ $1 = $'\n' ]]
+  then
+    return
+  fi
   print -Sr -- "${1%%$'\n'}"
   fc -p $_per_directory_history_directory
 }
