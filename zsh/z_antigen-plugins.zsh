@@ -23,7 +23,7 @@ antigen bundle sorin-ionescu/prezto modules/helper
 # There is nothing built into the plugin to define the default, so I changed it in src
 # ---------------------------------------------------------------------
 #source ~/.per-directory-history.zsh
-# antigen bundle per-directory-history
+#antigen bundle per-directory-history
 
 # I aliased "st" to be the sublime executable so don't really nead this plugin
 #antigen bundle sublime
