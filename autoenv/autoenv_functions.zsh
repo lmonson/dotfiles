@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
 
 default_autoenv() {
-
-    if [ -f ./.zsh_history ]; then
+    mypath=`dirname $1`
+    echo "mypath is $mypath"
+    if [ -f $mypath/.zsh_history ]; then
         echo "PUSH history"
-        fc -p $PWD/.zsh_history
+        fc -p $mypath/.zsh_history
+        unsetopt EXTENDED_HISTORY
         export LOCALHIST=true
     else
         unset LOCALHIST
     fi
+
 
 }
 

@@ -54,6 +54,6 @@ ZDOTDIR=$HOME
 # zmodload zsh/terminfo
 # bindkey "$terminfo[cuu1]" history-substring-search-up
 # bindkey "$terminfo[cud1]" history-substring-search-down
-bindkey "^[[A" history-substring-search-up
-bindkey "^[[B" history-substring-search-down
+# bindkey "^[[A" history-substring-search-up
+# bindkey "^[[B" history-substring-search-down
 
