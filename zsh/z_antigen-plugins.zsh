@@ -35,6 +35,7 @@ antigen bundle Tarrasch/zsh-autoenv
 
 # antigen bundle history
 
+antigen bundle zsh-users/zsh-completions
 
 # prezto based stuff
 # antigen bundle sorin-ionescu/prezto modules/git
