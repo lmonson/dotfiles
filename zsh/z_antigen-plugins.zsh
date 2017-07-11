@@ -31,7 +31,7 @@ antigen bundle sorin-ionescu/prezto modules/helper
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle autojump
-antigen bundle Tarrasch/zsh-autoenv
+#antigen bundle Tarrasch/zsh-autoenv
 
 # antigen bundle history
 
