@@ -1,36 +1,36 @@
 #!/usr/bin/env bash
 
 h_envpath() {
-    H_PATH="~/.h/scripts/${PWD:1}"
+    H_PATH="$HOME/.h/scripts/${PWD:1}"
 }
 
 h_envfile() {
     h_envpath
-    H_FILE=$H_PATH/env.sh
-    H_HISTORY=$H_PATH/env.hist
+    H_ENVIRONMENT=$H_PATH/environment.txt
+    H_HISTORY=$H_PATH/history.txt
 }
 
 h_envcreate() {
-    if [[ -e $H_FILE ]]
+    if [[ -e $H_ENVIRONMENT ]]
     then
         echo "already exists"
     else
         mkdir -p $H_PATH
-        echo "" > $H_FILE
+        echo "" > $H_ENVIRONMENT
         echo "" > $H_HISTORY
-        mvim $H_FILE
+        mvim $H_ENVIRONMENT
     fi
 }
 
 h_envread() {
-    if [[ -e $H_FILE ]]
+    if [[ -e $H_ENVIRONMENT ]]
     then
-        echo "Sourcing file $H_FILE"
-        . $H_FILE
+        echo "Sourcing file $H_ENVIRONMENT"
+        . $H_ENVIRONMENT
         if [[ -e $H_HISTORY ]]
         then
             echo "History is stored in $H_HISTORY"
-            fc -R $H_HISTORY
+            fc -p $H_HISTORY
         fi
     else
         echo "Enviroment for this directory does not yet exist."
@@ -38,18 +38,18 @@ h_envread() {
 }
 
 h_envupdate() {
-    if [[ -e $H_FILE ]]
+    if [[ -e $H_ENVIRONMENT ]]
     then
-        mvim $H_FILE
+        mvim $H_ENVIRONMENT
     else
         echo "Enviroment for this directory does not yet exist."
     fi
 }
 
 h_envdelete() {
-    if [[ -e $H_FILE ]]
+    if [[ -e $H_ENVIRONMENT ]]
     then
-        rm -rf $H_FILE
+        rm -rf $H_ENVIRONMENT
         rm -rf $H_PATH
     fi
 }
@@ -65,11 +65,21 @@ h_histedit() {
 }
 
 h_histsave() {
-    if [[ -e $H_FILE ]]
+    if [[ -e $H_ENVIRONMENT ]]
     then
-        fc -W $H_HISTORY
+        fc -AI $H_HISTORY
     fi
 }
+
+h_histlist() {
+    if [[ -e $H_HISTORY ]]
+    then
+        less $H_HISTORY
+    else
+        echo "There is no history file $H_HISTORY"
+    fi
+}
+
 
 h() {
     h_envfile
@@ -110,8 +120,18 @@ h() {
         return
     fi
 
-    echo "Usage: h (create|edit|delete|histedit|histsave|load)"
+    if [[ "$1" == "histlist" ]]
+    then
+        h_histlist
+        return
+    fi
+    echo "Usage: h (create|edit|delete|histedit|histlist|histsave|load)"
 
 }
+
+hh() {
+    n-history
+}
+
 
 

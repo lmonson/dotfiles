@@ -14,6 +14,12 @@ antigen bundle sorin-ionescu/prezto modules/prompt
 antigen bundle sorin-ionescu/prezto modules/helper
 
 # ---------------------------------------------------------------------
+# Provides history selection menu
+# ---------------------------------------------------------------------
+antigen bundle lmonson/zsh-navigation-tools
+bindkey "^R" znt-history-widget
+
+# ---------------------------------------------------------------------
 # OH-my-zshell based stuff
 # ---------------------------------------------------------------------
 # antigen bundle zsh-autoenv
