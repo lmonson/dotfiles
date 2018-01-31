@@ -18,7 +18,7 @@ h_envcreate() {
         mkdir -p $H_PATH
         echo "" > $H_ENVIRONMENT
         echo "" > $H_HISTORY
-        mvim $H_ENVIRONMENT
+        vim $H_ENVIRONMENT
     fi
 }
 
