@@ -40,7 +40,7 @@ h_envread() {
 h_envupdate() {
     if [[ -e $H_ENVIRONMENT ]]
     then
-        mvim $H_ENVIRONMENT
+        charm $H_ENVIRONMENT
     else
         echo "Enviroment for this directory does not yet exist."
     fi
@@ -58,7 +58,7 @@ h_envdelete() {
 h_histedit() {
     if [[ -e $H_HISTORY ]]
     then
-        mvim $H_HISTORY
+        charm $H_HISTORY
     else
         echo "There is no history file $H_HISTORY"
     fi
@@ -129,9 +129,7 @@ h() {
 
 }
 
-hh() {
-    n-history
-}
+
 
 
 
