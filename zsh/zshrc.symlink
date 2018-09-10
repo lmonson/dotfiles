@@ -28,6 +28,9 @@ do
   source $file
 done
 
+
+fpath+=~/Users/lmonson/.poetry_completions
+
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 compinit
@@ -43,4 +46,7 @@ unset config_files
 
   
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+
+source ~/.xsh
 
