@@ -50,8 +50,8 @@ antigen bundle zsh-users/zsh-completions
 # zstyle ':prezto:module:tmux:auto-start' local 'yes'
 # set-option -g 'destroy-unattached' 'on'
 
-antigen bundle kubectl_completion
-antigen bundle kubectl
+#antigen bundle kubectl_completion
+#antigen bundle kubectl
 
 antigen apply
 
