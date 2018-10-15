@@ -80,6 +80,14 @@ h_histlist() {
     fi
 }
 
+h_notebooks() {
+    if [[ -e $H_PATH ]]
+    then
+        mkdir -p $H_PATH/notebooks
+        jupyter notebook $H_PATH/notebooks
+    fi
+}
+
 
 h() {
     h_envfile
@@ -125,7 +133,14 @@ h() {
         h_histlist
         return
     fi
-    echo "Usage: h (create|edit|delete|histedit|histlist|histsave|load)"
+
+    if [[ "$1" == "notebook" ]]
+    then
+        h_notebooks
+        return
+    fi
+
+    echo "Usage: h (create|edit|delete|histedit|histlist|histsave|load|notebook)"
 
 }
 
