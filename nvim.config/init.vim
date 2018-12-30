@@ -1,15 +1,9 @@
 
-" ============================================================================
-" Python setup for neovim
-" ============================================================================
-let g:python_host_prog = '/Users/lmonson/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/lmonson/.pyenv/versions/neovim3/bin/python'
-
 "    set runtimepath^=~/.vim runtimepath+=~/.vim/after
 "    let &packpath = &runtimepath
 "    source ~/.vimrc
 
-" Plugins that I might want to include 
+" Plugins that I might want to include
 " fugitive  - git wrapper
 " unite replaced by denite
 " fzf
@@ -20,6 +14,9 @@ let g:python3_host_prog = '/Users/lmonson/.pyenv/versions/neovim3/bin/python'
 " snippits and/or support to Dash snippets/api lookup
 "
 "
+
+let g:python_host_prog = '/Users/lmonson/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/lmonson/.pyenv/versions/neovim3/bin/python'
 
 
 " ============================================================================
@@ -39,6 +36,7 @@ set number                  " add line numbers
 set wildmode=longest,list   " get bash-like tab completions
 set encoding=utf-8          " Default do utf-8 for all files
 "set cc=80                   " set an 80 column border for good coding style
+set invspell                " Turn on spell checking and highlighting
 
 filetype off
 
@@ -83,27 +81,39 @@ Plugin 'lifepillar/vim-solarized8'
 "Plugin 'altercation/vim-colors-solarized'
 
 " Status bar
-Plugin 'itchyny/lightline.vim'
+"Plugin 'itchyny/lightline.vim'
 
 " Vertical bars at indentation levels
-Plugin 'Yggdroot/indentLine'
-"
+"Plugin 'Yggdroot/indentLine'
+
 
 " Better code folding than that build into vim/neovim
-Plugin 'tmhedberg/SimpylFold'
+"Plugin 'tmhedberg/SimpylFold'
 
 " Better auto indentation
-Plugin 'vim-scripts/indentpython.vim'
+"Plugin 'vim-scripts/indentpython.vim'
 
 " Code level auto complete
 Bundle 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 " NerdTree
-Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/nerdtree'
 
 " NerdTree GIT plugin (show git status in nerdtree)
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Plugin 'Xuyuanp/nerdtree-git-plugin'
 
+" fake8 for conformity to pip 8
+Plugin 'nvie/vim-flake8'
+
+" Syntastic for syntax highlighting
+Plugin 'vim-syntastic/syntastic'
+
+" Highlight bad whitespace at the end of lines
+"Plugin 'ntpeters/vim-better-whitespace'
+
+Plugin 'junegunn/limelight.vim'
+
+Plugin 'junegunn/goyo.vim'
 " ===================
 " end of plugins
 " ===================
@@ -154,6 +164,12 @@ let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_setColors = 0
 "" }}
 
+" ============================================================================
+"  YouCompleteMe - Auto completions
+" ============================================================================
+let g:ycm_autoclose_preview_window_after_completion=1  "Go away when we are dong
+let mapleader=","
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " ============================================================================
 " Screen splitting
@@ -235,22 +251,17 @@ let g:SimplyFold_docstring_preview=1
 
 " Open NerdTree automatically when nvim starts if no files are specified
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " open NERDTree automatically when vim starts up on opening a directory?
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 " close vim if the only window left open is a NERDTree?
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Map control-n to show/hide nerdtree plugin
-map <C-n> :NERDTreeToggle<CR>
+"map <C-n> :NERDTreeToggle<CR>
 
- 
-" ============================================================================
-" Nerdtree-git-plugin configuration
-" ============================================================================
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
@@ -268,9 +279,7 @@ let g:NERDTreeIndicatorMapCustom = {
 let g:NERDTreeShowIgnoredStatus = 1
 
 " ============================================================================
-" Enable folding
-" Enable folding
-" Python specific configurations
+"  Code formatting and highlighting
 " ============================================================================
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
@@ -281,6 +290,19 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix
 
+let python_highlight_all=1
+syntax on
+
+" Let flake8 show stuff in the gutter
+"let g:flake8_show_in_file=1
+"let g:flake8_show_in_gutter=1
+
+" Run pep8 check on every file write operation
+"autocmd BufWritePost *.py call Flake8() 
+let python_highlight_all=1
+let g:syntastic_python_checkers = ['python','flake8']
+let g:syntastic_aggregate_errors = 1
+syntax on
 " ============================================================================
 " Terminal configuration
 " ============================================================================
@@ -298,3 +320,4 @@ tnoremap <C-h> <c-\><c-n><c-w>h
 tnoremap <C-l> <c-\><c-n><c-w>l
 
 
+let g:pymode_python = 'python3'
