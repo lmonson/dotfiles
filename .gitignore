@@ -12,3 +12,7 @@ atom.symlink/recovery
 nvim.config/plugged
 nvim.config/bundle
 git/gitconfig.local.symlink
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/Users/lmonson/dev/dotfiles/nvim.config'
+nvim.config/.*
