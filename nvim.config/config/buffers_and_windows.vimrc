@@ -60,3 +60,25 @@ nnoremap <silent> <S-Tab> :call SwitchToNextBuffer(-1)<CR>
 "Ctrl+W o
 
 
+
+"=====================================================
+ "" Comfortable Motion Settings
+ "=====================================================
+ let g:comfortable_motion_scroll_down_key = "j"
+ let g:comfortable_motion_scroll_up_key = "k"
+ let g:comfortable_motion_no_default_key_mappings = 1
+ let g:comfortable_motion_impulse_multiplier = 1  " Feel free to increase/decrease this value.
+ nnoremap <silent> <C-d> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 2)<CR>
+ nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -2)<CR>
+ nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 4)<CR>
+ nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -4)<CR>
+
+
+ tab sball
+ set switchbuf=useopen
+ set laststatus=2
+ nmap <F9> :call SwitchToNextBuffer(1)<CR>
+ nmap <F10> :call SwitchToNextBuffer(-1)<CR>
+ nmap <silent> <leader>q :SyntasticCheck # <CR> :bp <BAR> bd #<CR>
+
+

@@ -28,6 +28,8 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
+let NERDTreeWinSize=40
+
 " This config can be computationally expensive
 let g:NERDTreeShowIgnoredStatus = 1
 
