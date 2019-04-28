@@ -41,6 +41,8 @@ Plugin 'honza/vim-snippets'                 " snippets repo
 Plugin 'scrooloose/nerdcommenter'           " Easy code documentation
 Plugin 'mitsuhiko/vim-sparkup'              " Sparkup(XML/jinja/htlm-django/etc.) support
 Plugin 'w0rp/ale'
+Plugin 'godlygeek/tabular'                  " Helps with formatting things (like markdown tables)
+Plugin 'plasticboy/vim-markdown'            " Markdown support
 
 "-------------------=== Python  ===-----------------------------
 Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)

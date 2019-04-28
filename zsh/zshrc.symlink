@@ -48,9 +48,15 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # bindkey -v
 
 
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+export PYTHON_HOST_PROG='/Users/lmonson/.pyenv/versions/neovim2/bin/python'
+export PYTHON3_HOST_PROG='/Users/lmonson/.pyenv/versions/neovim3/bin/python'
 
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+. /Users/lmonson/miniconda3/etc/profile.d/conda.sh
+# Hook for desk activation
+[ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
+
+[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"

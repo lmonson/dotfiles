@@ -14,6 +14,10 @@ antigen use prezto
     antigen bundle zsh-users/zsh-completions
     antigen apply
 
+
+    bindkey '^[[A' history-substring-search-up
+    bindkey '^[[B' history-substring-search-down
+
     prompt walters
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

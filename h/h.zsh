@@ -8,6 +8,10 @@ h_envfile() {
     h_envpath
     H_ENVIRONMENT=$H_PATH/environment.txt
     H_HISTORY=$H_PATH/history.txt
+    H_GLOBAL=$HOME/.global_history
+
+    H_PRIMARY=$H_GLOBAL
+    H_SECONDARY=$H_HISTORY
 }
 
 h_envcreate() {
@@ -22,6 +26,31 @@ h_envcreate() {
     fi
 }
 
+h_history_hook() {
+  # respect hist_ignore_space
+  if [[ -o hist_ignore_space ]] && [[ "$1" == \ * ]]; then
+      true
+  else
+      # Save to global
+      print -Sr -- "${1%%$'\n'}"
+
+      # Save to local history
+      if [[ -e $H_SECONDARY ]]
+      then
+        fc -p $H_SECONDARY
+      fi
+  fi
+}
+
+h_swap() {
+  if [[ -e $H_SECONDARY ]]
+  then
+    H_PRIMARY=$H_SECONDARY
+    H_SECONDARY=$HISTFILE
+    export HISTFILE=$H_PRIMARY
+    echo "History changed to $HISTFILE"
+  fi
+}
 h_envread() {
     if [[ -e $H_ENVIRONMENT ]]
     then
@@ -29,8 +58,9 @@ h_envread() {
         . $H_ENVIRONMENT
         if [[ -e $H_HISTORY ]]
         then
-            echo "History is stored in $H_HISTORY"
-            fc -p $H_HISTORY
+          add-zsh-hook -d zshaddhistory h_history_hook
+          add-zsh-hook zshaddhistory h_history_hook
+          echo "History is stored in $H_HISTORY"
         fi
     else
         echo "Enviroment for this directory does not yet exist."

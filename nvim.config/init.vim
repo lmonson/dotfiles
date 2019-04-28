@@ -32,6 +32,7 @@ source $HOME/.config/nvim/config/airline.vimrc
 source $HOME/.config/nvim/config/deoplete.vimrc
 source $HOME/.config/nvim/config/devicons.vimrc
 source $HOME/.config/nvim/config/indentguides.vimrc
+source $HOME/.config/nvim/config/markdown.vimrc
 source $HOME/.config/nvim/config/neomake.vimrc
 source $HOME/.config/nvim/config/nerdcomment.vimrc
 source $HOME/.config/nvim/config/nerdtree.vimrc
