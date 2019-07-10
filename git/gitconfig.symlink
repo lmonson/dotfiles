@@ -17,7 +17,7 @@
         ui = true
 [core]
         excludesfile = ~/.gitignore
-        editor = st
+	editor = nvim
         autocrlf = input
 [apply]
         whitespace = nowarn
@@ -34,3 +34,5 @@
         # Setting to git 2.0 default to suppress warning message
         default = simple
 
+[credential]
+	helper = osxkeychain

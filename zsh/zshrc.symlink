@@ -19,6 +19,7 @@ config_files=($ZSH/**/*.zsh)
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}
 do
+  echo "Sourcing $file"
   source $file
 done
 
@@ -60,3 +61,16 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
 
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source $(which assume-role)
+export AWS_ROLE_SESSION_TIMEOUT=1440
+# AWS ACCOUNT NAME
+function aws_account_info {
+  [ "$AWS_ACCOUNT_NAME" ] && [ "$AWS_ACCOUNT_ROLE" ] && echo "%F{blue}aws:(%f%F{red}$AWS_ACCOUNT_NAME:$AWS_ACCOUNT_ROLE%f%F{blue})%F$reset_color"
+}
+
+# )ofni_tnuocca_swa($ is $(aws_account_info) backwards
+#PROMPT=`echo $PROMPT | rev | sed 's/ / )ofni_tnuocca_swa($ /'| rev`
+
