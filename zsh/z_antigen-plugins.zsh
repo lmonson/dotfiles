@@ -12,6 +12,9 @@ antigen use prezto
     antigen bundle zsh-users/zsh-history-substring-search
     antigen bundle autojump
     antigen bundle zsh-users/zsh-completions
+
+    export FZF_MARKS_JUMP="^j"
+    antigen bundle urbainvaes/fzf-marks
     antigen apply
 
 

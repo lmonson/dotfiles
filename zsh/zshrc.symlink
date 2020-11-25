@@ -44,32 +44,28 @@ unset config_files
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-
-# Use vi keybindings
-# bindkey -v
-
-
-
-export PYTHON_HOST_PROG='/Users/lmonson/.pyenv/versions/neovim2/bin/python'
-export PYTHON3_HOST_PROG='/Users/lmonson/.pyenv/versions/neovim3/bin/python'
-
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
+#================================================================
+# Would like a less specific way to bootstrap conda
+#================================================================
 . /Users/lmonson/miniconda3/etc/profile.d/conda.sh
+
+# BASE16_SHELL=$HOME/.config/base16-shell/
+# [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+
 # Hook for desk activation
-[ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
+# [ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
 
-[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
+# [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source $(which assume-role)
-export AWS_ROLE_SESSION_TIMEOUT=1440
+# source $(which assume-role)
+# export AWS_ROLE_SESSION_TIMEOUT=1440
 # AWS ACCOUNT NAME
-function aws_account_info {
-  [ "$AWS_ACCOUNT_NAME" ] && [ "$AWS_ACCOUNT_ROLE" ] && echo "%F{blue}aws:(%f%F{red}$AWS_ACCOUNT_NAME:$AWS_ACCOUNT_ROLE%f%F{blue})%F$reset_color"
-}
+# function aws_account_info {
+#   [ "$AWS_ACCOUNT_NAME" ] && [ "$AWS_ACCOUNT_ROLE" ] && echo "%F{blue}aws:(%f%F{red}$AWS_ACCOUNT_NAME:$AWS_ACCOUNT_ROLE%f%F{blue})%F$reset_color"
+# }
 
 # )ofni_tnuocca_swa($ is $(aws_account_info) backwards
 #PROMPT=`echo $PROMPT | rev | sed 's/ / )ofni_tnuocca_swa($ /'| rev`
