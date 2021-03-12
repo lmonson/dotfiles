@@ -1,6 +1,28 @@
+_find_all_cheats() {
+  unset PATH_CHEATS
+  dir=$(pwd -P)
+  while [ -n "$dir" ]; do
+    if [ -d "$dir/.cheats" ]; then
+      if [ -z "$PATH_CHEATS" ]; then
+        PATH_CHEATS="$dir/.cheats"
+      else
+        PATH_CHEATS="$PATH_CHEATS:$dir/.cheats"
+      fi
+    fi
+    dir=${dir%/*}
+  done
+  if [ -z "$PATH_CHEATS" ]; then
+    printf ''
+  else
+    printf '%s:' "$PATH_CHEATS"
+  fi
+}
+
+
 _call_navi() {
   local selected
-  CUSTOM_PATH="./.cheats:$(navi info cheats-path)"
+  RELATIVE_CHEATS=$(_find_all_cheats)
+  CUSTOM_PATH="$RELATIVE_CHEATS$(navi info cheats-path)"
   echo $CUSTOM_PATH
   if [ -n "$LBUFFER" ]; then
 
