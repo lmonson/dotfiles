@@ -11,6 +11,7 @@ _find_all_cheats() {
     fi
     dir=${dir%/*}
   done
+  PATH_CHEATS="$PATH_CHEATS:$HOME/.navi"
   if [ -z "$PATH_CHEATS" ]; then
     printf ''
   else
