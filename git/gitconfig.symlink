@@ -36,3 +36,5 @@
 
 [credential]
 	helper = project.code-workspace
+[init]
+	defaultBranch = main

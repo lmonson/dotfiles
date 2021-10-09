@@ -24,7 +24,6 @@ _call_navi() {
   local selected
   RELATIVE_CHEATS=$(_find_all_cheats)
   CUSTOM_PATH="$RELATIVE_CHEATS$(navi info cheats-path)"
-  echo $CUSTOM_PATH
   if [ -n "$LBUFFER" ]; then
 
     if selected="$(printf "%s" "$(navi --path "$CUSTOM_PATH" --print --fzf-overrides '--no-select-1' --query "${LBUFFER}" </dev/tty)")"; then

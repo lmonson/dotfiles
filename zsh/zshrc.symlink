@@ -2,7 +2,7 @@
 export ZSH=$HOME/.dotfiles
 
 # your project folder that we can `c [tab]` to
-export PROJECTS=~/dev
+export PROJECTS=$HOME/dev
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
@@ -11,6 +11,9 @@ if [[ -a ~/.localrc ]]
 then
   source ~/.localrc
 fi
+
+# from brew --prefix
+source /usr/local/share/antigen/antigen.zsh
 
 # all of our zsh files
 typeset -U config_files
@@ -47,7 +50,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 #================================================================
 # Would like a less specific way to bootstrap conda
 #================================================================
-. /Users/lmonson/miniconda3/etc/profile.d/conda.sh
+# . /Users/lmonson/miniconda3/etc/profile.d/conda.sh  # commented out by conda initialize
 
 # BASE16_SHELL=$HOME/.config/base16-shell/
 # [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
@@ -69,4 +72,20 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # )ofni_tnuocca_swa($ is $(aws_account_info) backwards
 #PROMPT=`echo $PROMPT | rev | sed 's/ / )ofni_tnuocca_swa($ /'| rev`
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/local/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/local/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/Caskroom/miniforge/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/local/Caskroom/miniforge/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
