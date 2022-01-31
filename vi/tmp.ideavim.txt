@@ -1,0 +1,309 @@
+let mapleader=" "       " Use space for the leader key
+nnoremap \e :e ~/.ideavimrc<CR>
+nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
+
+""" Currently trying excerpts from:
+"""     https://gist.github.com/AlexPl292/50a3ff4cef1badcbb23436b22cbd3cf4
+
+""" Plugins  --------------------------------
+Plug 'easymotion/vim-easymotion'
+
+
+""" Plugin settings -------------------------
+
+
+""" Common settings -------------------------
+set showmode               " Show current mode in command-line.
+set incsearch              " Highlight while searching with / or ?.
+set relativenumber         " Show relative line numbers instead of absolute
+set so=5                   " Number of lines of context to show around a navigation location
+set showcmd                " Show already typed keys when more are expected.
+set hlsearch               " Keep matches highlighted.
+
+
+""" Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=gray
+
+
+""" My Mappings -----------------------------
+
+"""      Splits
+nnoremap <leader>s <Plug>(easymotion-s)
+
+
+
+" nnoremap <silent> [b :bprevious<CR>
+" nnoremap <silent> ]b :bnext<CR>
+
+
+""" Keymaps I've not yet tried out but don't want to delete just yet
+
+nnoremap <Leader>t :NERDTreeFocus<CR>
+nnoremap <leader>e :action ShowErrorDescription<CR>
+nnoremap <leader>d :action QuickJavaDoc<CR>
+nnoremap <leader>o :action QuickJavaDoc<CR>
+nnoremap <leader>r :action RecentFiles<CR>
+
+
+
+
+" ---------------------------------------------------------------------------
+"   IdeaVim from https://github.com/saaguero/ideavimrc/blob/master/.ideavimrc
+" ---------------------------------------------------------------------------
+"   set hlsearch
+"   set scrolloff=3
+"   set ignorecase smartcase
+"   set showmode
+"   set history=1000
+"
+"   " easy system clipboard copy/paste
+"   noremap <space>y "*y
+"   noremap <space>Y "*Y
+"   noremap <space>p "*p
+"   noremap <space>P "*P
+"
+"   " easy window navigation
+"   nnoremap <c-l> <c-w>l
+"   nnoremap <c-j> <c-w>j
+"   nnoremap <c-h> <c-w>h
+"   nnoremap <c-k> <c-w>k
+"   nnoremap <a-h> gT
+"   nnoremap <a-l> gt
+"   nnoremap <c-s-tab> gT
+"   nnoremap <c-tab> gt
+"
+"   " clear the search buffer when hitting return
+"   nnoremap <space><cr> :nohlsearch<cr>
+"
+"   " options
+"   nnoremap cow :action EditorToggleUseSoftWraps<cr>
+"   nnoremap col :action EditorToggleShowWhitespaces<cr>
+"
+"   " actions
+"   nnoremap <space>q :action CloseContent<cr>
+"   nnoremap <space>Q :action ReopenClosedTab<cr>
+"   nnoremap <space>\ :action VimFilePrevious<cr>
+"   nnoremap <space>e :action SearchEverywhere<cr>
+"   nnoremap <space>E :action Switcher<cr>
+"   nnoremap <space>t :action FileStructurePopup<cr>
+"   nnoremap <space>T :action GotoSymbol<cr>
+"   nnoremap <space>a :action GotoAction<cr>
+"   nnoremap <space>b :action ToggleLineBreakpoint<cr>
+"
+"   " code navigation
+"   nnoremap <space>] :action GotoImplementation<cr>
+"   nnoremap <space>[ :action GotoSuperMethod<cr>
+"   nnoremap <space>u :action FindUsages<cr>
+"   nnoremap <space>gt :action GotoTest<cr>
+"   nnoremap <space>k :action HighlightUsagesInFile<cr>
+"   nnoremap \r :action RunClass<cr>
+"   nnoremap \R :action Run<cr>
+"   nnoremap \d :action DebugClass<cr>
+"   nnoremap \D :action Debug<cr>
+"   nnoremap \c :action CheckStyleCurrentFileAction<cr>
+"
+"   " code refactoring
+"   nnoremap <space>rr :action RenameElement<cr>
+"
+"   " unimpaired mappings
+"   nnoremap [<space> O<esc>j
+"   nnoremap ]<space> o<esc>k
+"   nnoremap [q :action PreviousOccurence<cr>
+"   nnoremap ]q :action NextOccurence<cr>
+"   nnoremap [m :action MethodUp<cr>
+"   nnoremap ]m :action MethodDown<cr>
+"   nnoremap [c :action VcsShowPrevChangeMarker<cr>
+"   nnoremap ]c :action VcsShowNextChangeMarker<cr>
+"
+"
+"   " built-in navigation to navigated items works better
+"   nnoremap <c-o> :action Back<cr>
+"   nnoremap <c-i> :action Forward<cr>
+"   " but preserve ideavim defaults
+"   nnoremap g<c-o> <c-o>
+"   nnoremap g<c-i> <c-i>
+"
+"   " built in search looks better
+"   nnoremap / :action Find<cr>
+"   " but preserve ideavim search
+"   nnoremap g/ /
+
+
+" --------------------------------------------------------------------------------
+" IdeaVim from https://gist.github.com/AlexPl292/50a3ff4cef1badcbb23436b22cbd3cf4
+" --------------------------------------------------------------------------------
+"  let mapleader=" "
+"
+"  """ Plugins  --------------------------------
+"  set surround
+"  set multiple-cursors
+"  set commentary
+"  set argtextobj
+"  set easymotion
+"  set textobj-entire
+"  set ReplaceWithRegister
+"  set exchange
+"  " Trying the new syntax
+"  Plug 'machakann/vim-highlightedyank'
+"
+"  """ Plugin settings -------------------------
+"  let g:argtextobj_pairs="[:],(:),<:>"
+"
+"  " <C-n> seems to me as a better solution than <M-n>,
+"  " but we should finally support vim-visual-multi because vim-multiple-cursors is deprecated now
+"  map <C-n> <Plug>NextWholeOccurrence
+"
+"  """ Common settings -------------------------
+"  set showmode
+"  set so=5
+"  set incsearch
+"  set nu
+"
+"  """ Idea specific settings ------------------
+"  set ideajoin
+"  set ideastatusicon=gray
+"
+"  """ My Mappings -----------------------------
+"  map <leader>f <Plug>(easymotion-s)
+"  map <leader>e <Plug>(easymotion-f)
+"
+"  map <leader>d <Action>(Debug)
+"  map <leader>r <Action>(RenameElement)
+"  map <leader>c <Action>(Stop)
+"  map <leader>z <Action>(ToggleDistractionFreeMode)
+"
+"  map <leader>s <Action>(SelectInProjectView)
+"  map <leader>a <Action>(Annotate)
+"  map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+"  map <S-Space> <Action>(GotoNextError)
+"
+"  " Reformat the current line only
+"  map <leader>l V<Action>(ReformatCode)
+"
+"  map <leader>b <Action>(ToggleLineBreakpoint)
+"  map <leader>o <Action>(FileStructurePopup)
+"
+"  map <leader>J Ji <ESC>
+"
+"  " Just makes me nervous
+"  map H h
+"
+"  " Toggle case and start typing. E.g. `<leader>iget`: `property` -> `getProperty`
+"  map <leader>i ~hi
+"  " Remove selection and toggle case. E.g. `v2l<leader>u`: `getProperty` -> `property`
+"  vmap <leader>u d~h
+"
+"  " I think it's a better solution
+"  map U <C-R>
+"
+"  """ Strict mode for development ---------------
+"  set ideastrictmode
+
+" -----------------------------------------------------------------------
+"  IdeaVim from https://github.com/leeturner/vimrc/blob/master/ideavimrc
+" -----------------------------------------------------------------------
+"  source ~/.vimrc
+"
+"  set clipboard+=unnamed
+"  set clipboard+=ideaput
+"  nnoremap \e :e ~/.ideavimrc<CR>
+"  nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
+"
+"  """ Plugin
+"  " ys, cs, ds,  S
+"  set surround
+"  " gcc, gc + motion, v_gc
+"  set commentary
+"  " argument text objects: aa, ia
+"  set argtextobj
+"  " cx{motion} to select, again to exchange
+"  set exchange
+"  " entire buffer text object: ae
+"  set textobj-entire
+"  set multiple-cursors
+"  set virtualedit=onemore
+"  set NERDTree
+"  set easymotion
+"  set highlightedyank
+"  set vim-paragraph-motion
+"  set textobj-indent
+"  set vim-indent-object
+"
+"  """ Plugin settings
+"  let g:highlightedyank_highlight_duration = "1000"
+"
+"  """ Idea specific settings
+"  set ideajoin
+"  set ideamarks
+"  set ideastatusicon=gray
+"  set idearefactormode=keep
+"  set showmode
+"
+"  """ Mappings
+"  map <c-z> <Action>(ToggleDistractionFreeMode)
+"  nnoremap Q :action CloseProject<CR>
+"
+"  """ Window Navigation and Splits
+"  map <c-\> <Action>(SplitVertically)
+"  map <c--> <Action>(SplitHorizontally)
+"  map <c-=> <Action>(UnsplitAll)
+"  map <leader>en <Action>(EditSourceInNewWindow)
+"  map <c-x> (action)(HideAllWindows)
+"  nnoremap <c-x> :action HideAllWindows<CR>
+"  map <c-w>m <Action>(MaximizeEditorInSplit)
+"  map <c-w>+ <Action>(StretchSplitToTop)
+"  map <c-w>- <Action>(StretchSplitToBottom)
+"  map <c-w>< <Action>(StretchSplitToLeft)
+"  map <c-w>> <Action>(StretchSplitToRight)
+"
+"  """ Keep visual selection
+"  vnoremap < <gv
+"  vnoremap > >gv
+"
+"  """ Navigate methods
+"  map [[ <Action>(MethodUp)
+"  map ]] <Action>(MethodDown)
+"
+"  """ Collapse different regions
+"  map zc <Action>(CollapseRegion)
+"  map zo <Action>(ExpandRegion)
+"  map <leader>zc <Action>(CollapseAllRegions)
+"  map <leader>zo <Action>(ExpandAllRegions)
+"
+"  map <leader>r <Action>(Refactorings.QuickListPopupAction)
+"  map <leader>= <Action>(ReformatCode)
+"  map <leader>o <Action>(OptimizeImports)
+"
+"  map <c-r> <Action>(RecentFiles)
+"  map <leader>l <Action>(RecentLocations)
+"  map <leader>h <Action>(LocalHistory.ShowHistory)
+"
+"  nnoremap <c-/> :action FindInPath<CR>
+"  nnoremap <c-c> :action GotoClass<CR>
+"  nnoremap <c-f> :action GotoFile<CR>
+"  nnoremap <c-o> :action GotoSymbol<CR>
+"
+"  map ge <Action>(GotoNextError)
+"  map gE <Action>(GotoPreviousError)
+"  nnoremap gi :action GotoImplementation<CR>
+"  nnoremap gd :action GotoDeclaration<CR>
+"  nnoremap gp :action GotoSuperMethod<CR>
+"  nnoremap gt :action GotoTest<CR>
+"  nnoremap gb :action Back<CR>
+"  nnoremap gf :action Forward<CR>
+"
+"  nnoremap <leader>u :action FindUsages<CR>
+"  nnoremap <leader>h :action CallHierarchy<CR>
+"  nnoremap <c-s> :action FileStructurePopup<CR>
+"
+"  """ Building, Testing and Debugging
+"  nnoremap ,t :action ActivateDebugToolWindow<CR>
+"  nnoremap ,f :action ChooseDebugConfiguration<CR>
+"  nnoremap ,d :action ContextDebug<CR>
+"  nnoremap ,u :action Rerun<CR>
+"  nnoremap ,b :action ToggleLineBreakpoint<CR>
+"  map <leader>m <Action>(RunAnything)
+"
+"  """ IdeaVim development stuff
+"  set ideastrictmode
