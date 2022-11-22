@@ -38,3 +38,14 @@
 	helper = project.code-workspace
 [init]
 	defaultBranch = main
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[user]
+	name = lmonson
+	email = 
+[commit]
+	template = /Users/lmonson/.stCommitMsg
