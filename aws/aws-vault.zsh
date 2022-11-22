@@ -1,1 +1,0 @@
-export AWS_VAULT_KEYCHAIN_NAME=login
