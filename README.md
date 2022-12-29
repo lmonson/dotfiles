@@ -4,7 +4,7 @@ To install
 2. clone this repo to ~/.dotfiles
 3. rewrite ~/.zshrc as
 ```shell
-ZDOTDIR=~/.oh-your-dotfiles zsh
+ZDOTDIR=~/.oh-your-doTfiles zsh
 ```
 4. Start the shell and run
 ```shell
