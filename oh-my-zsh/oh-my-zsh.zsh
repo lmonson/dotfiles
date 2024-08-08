@@ -70,7 +70,7 @@ zstyle ':omz:update' frequency 5
 # Add wisely, as too many plugins slow down shell startup.
 ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
 #plugins=(git zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting)
-plugins=(git asdf)
+plugins=(git asdf fzf-docker)
 
 source $ZSH/oh-my-zsh.sh
 

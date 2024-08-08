@@ -35,7 +35,7 @@
         default = simple
 
 [credential]
-	helper = project.code-workspace
+	helper = store
 [init]
 	defaultBranch = main
 [difftool "sourcetree"]
@@ -49,3 +49,8 @@
 	email = 
 [commit]
 	template = /Users/lmonson/.stCommitMsg
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
